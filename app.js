@@ -10,21 +10,39 @@ const supabase = createClient(
 
 app.get("/name", async (req, res) => {
   const { data, error } = await supabase.from("task-1_DB").select("name");
+  // console.log(data);
+  res.send(data);
+});
+
+app.get("/get", async (req, res) => {
+  const { data, error } = await supabase.from("task-1_DB").select("*");
   //   console.log(data);
   res.send(data);
 });
 
-app.get("/sem", async (req, res) => {
-  const { data, error } = await supabase.from("task-1_DB").select("sem");
-  //   console.log(data);
-  res.send(data);
-});
-
-app.post("/add", async (req, res) => {
+app.post("/post", async (req, res) => {
   const { data, error } = await supabase
     .from("task-1_DB")
     .insert([{ name: "david", city: "europe", sem: "8" }]);
-  console.log(data);
+  //   console.log(data);
+  res.send(data);
+});
+
+app.put("/update", async (req, res) => {
+  const { data, error } = await supabase
+    .from("task-1_DB")
+    .update({ sem: "6", city: "nadiad" })
+    .eq("id", "2");
+
+  res.send(data);
+});
+
+app.delete("/delete", async (req, res) => {
+  const { data, error } = await supabase
+    .from("task-1_DB")
+    .delete({ name: "david" })
+    .eq("id", "9");
+
   res.send(data);
 });
 
