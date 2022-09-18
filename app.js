@@ -8,6 +8,10 @@ const supabase = createClient(
 );
 // console.log("supabase: ", supabase);
 
+app.get("/", async (req, res) => {
+  res.send("you are connected...");
+});
+
 app.get("/name", async (req, res) => {
   const { data, error } = await supabase.from("task-1_DB").select("name");
   // console.log(data);
