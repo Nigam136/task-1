@@ -23,7 +23,7 @@ app.get("/get", async (req, res) => {
 app.post("/post", async (req, res) => {
   const { data, error } = await supabase
     .from("task-1_DB")
-    .insert([{ name: "david", city: "europe", sem: "8" }]);
+    .insert([{ name: "david", city: "europe", sem: "8", id: "9" }]);
   //   console.log(data);
   res.send(data);
 });
