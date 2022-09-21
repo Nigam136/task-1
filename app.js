@@ -50,13 +50,15 @@ app.delete("/delete", async (req, res) => {
   res.send(data);
 });
 
-app.post("/post", async (req, res) => {
+app.post("/post1", async (req, res) => {
   const { data, error } = await supabase
     .from("task-1_DB")
     .insert([{ name: "josh", city: "europe", sem: "5", id: "11" }]);
   //   console.log(data);
   res.send(data);
 });
+
+
 
 
 app.listen(port, () => {
